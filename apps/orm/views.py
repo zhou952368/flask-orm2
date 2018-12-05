@@ -82,3 +82,9 @@ def pagination_view(page, size):
 
     return render_template('pagination.html', pagination=pagination, left_current=left_current,
                            right_current=right_current)
+
+
+@orm.route('/cate/')
+def cate():
+    cates = Category.query.all()
+    return render_template('cates.html', cates=cates)

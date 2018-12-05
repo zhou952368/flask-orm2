@@ -3,12 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style type="text/css">
+        ul {
+            margin: 0;
+            padding: 0px;
+            list-style: none;
+        }
+
+        .cate-warp {
+            height: 500px;
+            position: relative;
+            width: 150px;
+        }
+
+        .cate-warp > li {
+            color: white;
+            background: #2b2b2b;
+        }
+
+        .cate-warp > li:hover {
+            color: black;
+            background: white;
+        }
+
+        .sub {
+            height: 500px;
+            position: absolute;
+            top: 0px;
+            width: 300px;
+            background: white;
+            left: 150px;
+            display: none;
+        }
+
+        .type {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#cate>li').mouseover(function () {
+                $(this).find('.sub').show()
+            });
+            $('#cate>li').mouseleave(function () {
+                $(this).find('.sub').hide()
+            });
+
+            $('.sub>li').mouseover(function () {
+                $(this).find('.type').show()
+            });
+            $('.sub>li').mouseleave(function () {
+                $(this).find('.type').hide()
+            })
+        })
+
+    </script>
+
 </head>
 <body>
 <ul>
-    {% for cate in cate_list %}
-        <li><a href="">{{ cate.name }}</a></li>
-    {% endfor %}
+    <ul id="cate" class="cate-warp">
+        {% for cate in cates %}
+            <li>
+                <a>{{ cate.name }}</a>
+                <ul class="sub">
+                    {% for sub in cate.subs %}
+                        <li>
+                            <a href="">{{ sub.name }}</a>
+                            <ul class="type">
+                                {% for type in sub.types %}
+                                    <li>{{ type.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+
+
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
 </ul>
 
 
