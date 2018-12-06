@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{ 'hello' ~ 'world' }}
+{{ name |  default('无') }}
+{{ name |  capitalize }}
+{{ name |  trim }}
+{{ 1|test(2) }}
+
+{#定义变量#}
+{#全局变量#}
+{#局部变量#}
+{% set  name = '大写的BUG' %}
+
+{{ name }}
+
+{% with  temp='这个是局部变量' %}
+    {{ temp }}
+{% endwith %}
+{% for i in [1,2,3] %}
+    {#    从1开始#}
+    {{ loop.index }}
+    {#    从0开始#}
+    {{ loop.index0 }}
+    {{ loop.first }}
+    {{ loop.last }}
+{% endfor %}
+{% include '' %}
+
+{% from '_macro.html' import create_input %}
+<form>
+    {{ create_input('text','username') }}
+    {{ create_input('password','password') }}
+</form>
+</body>
+</html>

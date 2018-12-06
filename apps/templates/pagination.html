@@ -15,8 +15,6 @@
         </ul>
     </div>
     <div>
-
-
         <a href="{{ url_for('orm.pagination_view', page=1,size=1) }}">首页</a>
         {% if pagination.has_prev %}
             <a href="{{ url_for('orm.pagination_view', page=pagination.prev_num,size=1) }}">上一页</a>

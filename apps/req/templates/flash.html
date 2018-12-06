@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#[(erro,'111111')]#}
+{% with  messages= get_flashed_messages(with_categories=True,category_filter=['error']) %}
+    {% if messages %}
+        {% for  error ,msg in messages %}
+            <p class="{{ error }}">{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</body>
+</html>
